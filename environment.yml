@@ -1,10 +1,18 @@
 name: surfel_splatting
 channels:
-  - pytorch
   - nvidia
+  - pytorch
   - conda-forge
   - defaults
 dependencies:
+  - pytorch-cuda=11.8  # This is the crucial pin for the pytorch channel
+  - cuda-nvcc=11.8
+  - cuda-toolkit=11.8
+  - cuda-runtime=11.8
+  - cuda-version=11.8  # Forces the metapackage to stay at 11.8
+  - gxx_linux-64=11    # Forces the C++ compiler to version 11
+  - gcc_linux-64=11    # Forces the C compiler to version 11
+  - ninja              # Fixes the "could not find ninja" warning
   - ffmpeg=4.2.2
   - pillow=10.2.0
   - pip=23.3.1
@@ -13,6 +21,7 @@ dependencies:
   - torchaudio=2.0.0
   - torchvision=0.15.0
   - typing_extensions=4.9.0
+  - libtiff=4.4.0
   - pip:
     - open3d==0.18.0
     - mediapy==1.1.2
